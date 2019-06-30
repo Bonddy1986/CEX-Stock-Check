@@ -10,7 +10,6 @@ if [[ -f product.html ]]; then
     rm -f product.html
 fi
 
-while true; do ./cex_checker.sh && sleep 300; done
 curl -s -L -o product.html https://uk.webuy.com/product-detail?id=${product_code}
 
 if [[ -n $(grep "In stock online" product.html) ]]; then
@@ -31,3 +30,5 @@ if [[ -n $(grep "In stock online" product.html) ]]; then
 else
     echo "This item is still out of stock"
 fi
+
+while true; do ./cex_checker.sh && sleep 15; done
